@@ -1,0 +1,134 @@
+э1. Ստեղծել նոր ֆայլ՝ file.txt, և դրա համար սահմանել հետևյալ իրավունքները․ - rwx r-- r--
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ touch file.txt
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ chmod 744 file.txt
+
+//rwx `7
+//r-- `4
+
+2. Փոփոխել file.txt ֆայլի իրավունքները՝ բոլոր օգտատերերի համար ավելացնելով
+կատարելու իրավունք։ Օգտվել ֆայլի ռեժիմների սիմվոլիկ ներկայացումից։
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ chmod a+x file.txt
+
+//+ ` ավելացնել իրավունք (Օր․՝ u+x – սեփականատիրոջ համար ավելացնում է
+կատարելու իրավունք)
+//a ` All – u, g, o սիմվոլների համատեղում
+
+3. Փոփոխել file.txt ֆայլի իրավունքները՝ խմբի օգտատերերի և այլ օգտատերերի համար
+հեռացնելով կատարելու իրավունքը։ Օգտվել սիմվոլիկ ներկայացումից։
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ chmod go-x file.txt
+
+//- ` հեռացնել իրավունք
+
+4. Փոփոխել file.txt ֆայլի իրավունքները՝ հեռացնելով բոլոր իրավունքները, և
+սահմանելով գրելու և կարդալու իրավունքներ միայն ֆայլի սեփականատիրոջ համար։
+Նույն գործողությունը կատարել 2 անգամ ՝ օգտվելով ֆայլի ռեժիմների 8-ական և
+սիմվոլիկ ներկայացումներից։
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ chmod 600 file.txt
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ chmod u=rw file.txt
+
+5. Ստեղծել նոր դիրեկտորիա՝ dir: Սահմանել հետևյալ իրավունքները․ d rw- rw- rw-։ dir
+դիրեկտորիայում ստեղծել նոր ֆայլ՝ file.txt։ Բացատրել ստացված
+հաղորդագրությունը։ Փոփոխել դիրեկտորիայի իրավունքներն այնպես, որ ֆայլը
+հաջողությամբ ստեղծվի։
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ mkdir dir
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ chmod 666 dir
+//Սահմանել հետևյալ իրավունքները․ d rw- rw- rw-։
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ touch dir/file.txt
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ chmod 775 dir
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ touch dir/file.txt
+
+6. dir դիրեկտորիայում ստեղծել ևս 2 ֆայլ՝ file1.txt, file2.txt։ Մեկ հրամանի կատարմամբ
+փոփոխել դիրեկտորիայի բոլոր ֆայլերի իրավունքները՝ սահմանելով - rwx rw- rw-։
+
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ touch dir/file1.txt dir/file2.txt
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ chmod 766 dir/*
+
+7. umask հրամանի միջոցով սահմանել այնպիսի bitmask, որ նոր ստեղծվող ֆայլերը
+լռելյայն կերպով ունենան հետևյալ իրավունքները․ - rw- r-- ---
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ umask 027
+
+//Կաող ենք օգռագործել նաև
+//umask 027
+//0026՝ octal(8) համակարգում 
+//0 000 010 110՝ երկուական(2) համակարգում
+
+
+
+8. umask հրամանի միջոցով սահմանել այնպիսի bitmask, որ նոր ստեղծվող ֆայլերը
+լռելյայն կերպով ունենան հետևյալ իրավունքները․ - rw- --- ---: Վերադարձնել bitmask-ի
+լռելյայն արժեքը՝ կատարելով umask 0022 հրամանը։
+
+//նոր ստեղծվող ֆայլերը լռելյայն կերպով ունենան հետևյալ իրավունքները․ - rw- --- ---
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ umask 0066
+
+//Վերադարձնել bitmask-ի լռելյայն արժեքը՝ կատարելով umask 0022 հրամանը։
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ umask 0022
+
+9. Ստեղծել սկրիպտ, որը կարտածի /home/student դիրեկտորիայի ֆայլերի ցուցակը։
+Սկրիպտի համար սահմանել - -wx r-- r-- իրավունքները։ Կատարել սկրիպտը և
+բացատրել ստացված հաղորդագրությունը։ Փոփոխել իրավունքներն այնպես, որ
+սկրիպտը կատարվի։
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ cat>script.sh
+#!/bin/bash
+ls ~/lab4
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ chmod 0344 script.sh
+//Չկա բավարար թույլատրություն սկրիպտը աշխատացնելու համար
+
+//Սկրիպտը աշխատացնելու համար պետք է փոխենք թույլատրությունները
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ chmod +x script.sh
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ ./script.sh
+file.txt  script.sh
+
+10. Սկրիպտը տեղադրել ~/bin դիրեկտորիայում։ Փոփոխել $PATH փոփոխականն այնպես,
+որ սկրիպտը հնարավոր լինի կատարել առանց հասցեն նշելու։
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ mv script.sh ~/bin
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ export PATH=~/bin:"$PATH"
+//"$PATH"-ը PATH փոփոխականի ընթացիկ արժեքն է:
+
+
+
+
+
+
+

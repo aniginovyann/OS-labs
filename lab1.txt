@@ -1,62 +1,111 @@
+//1. Ստեղծել lab1 անունով դիրեկտորիա, որում ստեղծել 4 տեքստային ֆայլ՝ file.txt, file1.txt, 
+file2.txt, file3.txt և 2 դիրեկտորիա՝ dir1, dir2։
 
-#1
-C:\Users\Hayko>mkdir lab1 
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~/Desktop (master)
+$ mkdir lab1
 
-C:\Users\Hayko>cd/Users/Hayko/lab1
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~/Desktop (master)
+$ cd /c/Users/Hayko/Desktop/lab1
 
-C:\Users\Hayko\lab1>touch file.txt file1.txt file2.txt file3.txt
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~/Desktop/lab1 (master)
+$ touch file.txt file1.txt file2.txt file3.txt
 
-C:\Users\Hayko\lab1>mkdir dir1 dir2
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~/Desktop/lab1 (master)
+$ mkdir dir1 dir2
 
-#2
-C:\Users\Hayko\lab1>ls *.txt  #Փնտրում է *.txt ֆայլերը։
-file.txt  file1.txt  file2.txt  file3.txt
+//2. Կատարել հետևյալ հրամանները և բացատրել տարբերությունը․
+ls *.txt
+ls * .txt
 
-C:\Users\Hayko\lab1>ls * .txt   #Փնտրում է ինչ-որ ․txt ֆայլ։
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~/Desktop/lab1 (master)
+$ ls *.txt
+file.txt  file1.txt  file2.txt file3.txt
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~/Desktop/lab1 (master)
+$ ls * .txt
 ls: cannot access '.txt': No such file or directory
-file.txt  file1.txt  file2.txt  file3.txt
+file.txt  file1.txt  file2.txt file
 
 dir1:
 
 dir2:
 
-#3
-C:\Users\Hayko\lab1>ls f???.txt
+ls *.txt -ի դեպքում գտնում և արտածում է բոլոր *.txt տեսքի ֆայլերը։
+ls * .txt-ի դեպքում փնտրում է ինչ-որ ․txt ֆայլ։
+
+
+3. Ցուցադրել բոլոր տեքստային ֆայլերը (ավարտվում է .txt սիմվոլներով), որոնց
+անվանումը սկսվում է f սիմվոլով և բաղկացած է 4 սիմվոլից։
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~/Desktop/lab1 (master)
+$ ls f???.txt
 file.txt
 
-#4
-C:\Users\Hayko\lab1>ls file[0-9].txt
+4. Ցուցադրել բոլոր տեքստային ֆայլերը, որոնց անվանումը սկսվում է file բառով, որին
+հաջորդում է թվանշան:
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~/Desktop/lab1 (master)
+$ ls file[0-9].txt
 file1.txt  file2.txt  file3.txt
 
-#5
-C:\Users\Hayko\lab1>ls *[a-z,12].txt
+5. Ցուցադրել բոլոր տեքստային ֆայլերը, որոնց անվան վերջին սիմվոլը փոքրատառ է, կամ 1, 2 
+թվանշաններից որևէ մեկը:
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~/lab1 (master)
+$ ls *[a-z,12].txt
 file.txt  file1.txt  file2.txt
 
-C:\Users\Hayko\lab1>cd/Users/Hayko
+6. Պատճենել /etc/passwd ֆայլը lab1 դիրեկտորիայումֈ
 
-#6 Քանի որ ես աշխատում եմ windows օպերացիոն համակարգով, իսկ windows-ում չկա /etc/passwd ֆայլը, ես պարզապես ստեղծել եմ passwd անունով ֆայլ և պատճենել lab1-ում
-C:\Users\Hayko>touch passwd
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ touch passwd
 
-C:\Users\Hayko>cp passwd lab1
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ cp passwd lab1
 
-C:\Users\Hayko>cd/Users/Hayko/lab1
+//Քանի որ ես աշխատում եմ windows օպերացիոն համակարգով, իսկ windows-ում չկա /etc/passwd ֆայլը, ես պարզապես ստեղծել եմ passwd անունով ֆայլ և պատճենել lab1-ում
 
-#7
-C:\Users\Hayko\lab1>mv passwd new
+7. Անվանափոխել պատճենված ֆայլը՝ այն դարձնելով new: Տեղափոխել new ֆայլը դեպի dir1, այնուհետև
+տեղափոխել դեպի dir2:
 
-C:\Users\Hayko\lab1>mv new dir1
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~/lab1 (master)
+$ mv passwd new
 
-C:\Users\Hayko\lab1>mv dir1/new dir2
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~/lab1 (master)
+$ mv new dir1
 
-#8
-C:\Users\Hayko\lab1>mv dir2 dir3
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~/lab1 (master)
+$ mv dir1/new dir2
 
-C:\Users\Hayko\lab1>mv dir3 dir1
+8. Անվանափոխել dir2-ը՝ այն դարձնելով dir3: Տեղափոխել dir3-ը դեպի dir1:
 
-C:\Users\Hayko\lab1>cd/Users/Hayko
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~/lab1 (master)
+$ mv dir2 dir3
 
-#9
-C:\Users\Hayko>mv lab1/dir1/dir3 lab1
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~/lab1 (master)
+$ mv dir3 dir1
 
-#10
-C:\Users\Hayko>rm -r lab1
+9. Տեղափոխել dir3-ում գտնվող new ֆայլը դեպի lab1
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~/Desktop (master)
+$ cd /c/Users/Hayko
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ mv lab1/dir1/dir3/new lab1
+
+10. Ջնջել lab1 դիրեկտորիան
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ rm -r lab1
+
+
+
+
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           h 
+
+
+

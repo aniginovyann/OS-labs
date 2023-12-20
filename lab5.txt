@@ -1,0 +1,261 @@
+1. Ստեղծել կամայական արժեքով փոփոխական՝ str: Ցուցադրել հետևյալ հրամանների
+աշխատանքի արդյունքի տարբերությունը.
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ touch 1.sh
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ #!/bin/bash
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ str='Variable'
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ echo $str2
+//echo $str2 հրամանը կստեղծի str2 անունով փոփոխականի արժեքը: 
+//Իմ օրինակում, քանի որ str2-ը սահմանված չէ, այն արտածել է դատարկ տող։
+
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ echo ${str}2
+Variable2
+
+//Այս հրամանը միավորում է str անունով փոփոխականի արժեքը 2 նիշի հետ։
+
+2. Արտածել հետևյալ արտահայտության արժեքը. (5^2∗4)/10
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ echo $(((5**2 * 4) / 10))
+10
+
+
+3. Ցուցադրել հետևյալ հրամանների աշխատանքի արդյունքի տարբերությունը․
+echo "The balance for user $USER is: $5.00"
+echo "The balance for user $USER is: \$5.00"
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ echo "The balance for user $USER is: $5.00"
+The balance for user  is: .00
+//$5-ը հասկանում է որպես հինգերորդ արգումենտ,որը փոխանցվում է ֆունկցիային: 
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ echo "The balance for user $USER is: \$5.00"
+The balance for user  is: $5.00
+//հասկանում է որպես տողի մաս, այլ ոչ թե փոփոխական:
+
+
+
+4. Ցուցադրել հետևյալ հրամանների աշխատանքի արդյունքի տարբերությունը․
+echo '$USER $((2 + 2)) $(ls)'
+echo "$USER $((2 + 2)) $(ls)"
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ echo '$USER $((2+2)) $(ls)'
+$USER $((2+2)) $(ls)
+//''-ի մեջ հասկանում է տեքստ և չակերտների մեջ գտնվոց բոլոր նիշերը պահպանվում են, իսկ փոփոխականները չեն ընդլայնվում։
+
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ echo "$USER $((2+2)) $(ls)"
+ 4 1.sh
+3D Objects/
+3D Objects - Shortcut.lnk*
+AppData/
+Application Data@
+Contacts/
+Cookies@
+Desktop/
+Documents/
+Downloads/
+Favorites/
+IntelGraphicsProfiles/
+Links/
+Local Settings@
+MediaGet2/
+MicrosoftEdgeBackups/
+Music/
+NTUSER.DAT
+NTUSER.DAT{53b39e88-18c4-11ea-a811-000d3aa4692b}.TM.blf
+NTUSER.DAT{53b39e88-18c4-11ea-a811-000d3aa4692b}.TMContainer00000000000000000001.regtrans-ms
+NTUSER.DAT{53b39e88-18c4-11ea-a811-000d3aa4692b}.TMContainer00000000000000000002.regtrans-ms
+NetHood@
+OneDrive/
+Pictures/
+PrintHood@
+Recent@
+Saved Games/
+Searches/
+SendTo@
+Tracing/
+Videos/
+bin*
+dir/
+dirlist-bin.txt
+dirlist-sbin.txt
+home/
+lab3/
+lab4/
+ntuser.dat.LOG1
+ntuser.dat.LOG2
+ntuser.ini
+source/
+Мои документы@
+Шаблоны@
+главное меню@
+
+//""-ի մեջ $-ից հետո գրվածները փոփոխականներ են 
+//Ինչպես նաև կրկնակի չակերտները թույլ են տալիս փոփոխականների և հրամանների փոխարինում:
+// $USER-ը փոխարինվում է իրական օգտագործողի անունով
+// $((2 + 2))-համար գրվում է 4
+// $(ls)-ը փոխարինվում է ls հրամանի ելքով:
+//Արտածում է ընթացիկ դիրեկտորիայի ֆայլերը։
+
+5. Առանձին տողերում արտածել ընթացիկ դիրեկտորիան և այնտեղ առկա տեքստային
+ֆայլերի քանակը։ Օգտագործել Here document:
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ cat<<EOF
+> Current Directory: $(pwd)
+> Number of Files: $(ls | wc -l)
+> EOF
+Current Directory: /c/Users/Hayko
+Number of Files: 45
+
+//cat <<EOF ` Here Document-ի սկիզբն է:
+//$(pwd) ` հրամանի փոխարինում
+//$(ls | wc -l) `հրամանի փոխարինում, հաշվում է ls հրամանից ստացվող տողերի քանակը
+//EOF `Here Document-ի ավարտն է
+
+6. Գրել 2 թվեր գումարող ֆունկցիա։ Թվերը ֆունկցիային փոխանցել որպես
+արգումենտներ։
+
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ sum(){
+> result=$(($1 + $2))
+> echo "The sum is: $result"
+> }
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ sum 7 9
+The sum is: 16
+
+
+7. Գրել ֆունկցիա, որը որպես արգումենտ կստանա դիրեկտորիայի անվանումը և
+կարտածի այնտեղ առկա ֆայլերի քանակը։
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ count_files(){
+> dir_name="$1"
+> files_count=$(ls "$dir_name" | wc -l)
+> echo "Count of files in $dir_name: $files_count"
+> }
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ count_files "/c/Users/Hayko/dir"
+Count of files in /c/Users/Hayko/dir: 3
+
+8. Գրել սկրիպտ, որում նոր ստեղծված ֆայլի համար ստուգել, թե արդյոք այն ունի
+կարդալու / գրելու / կատարելու թույլտվություն, և արտածել համապատասխան
+հաղորդագրություն։
+
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ #!/bin/bash
+
+check_permissions() {
+ filename="file.txt"
+
+    if [ -e "$filename" ]; then
+        echo "File $filename exists."
+
+        if [ -r "$filename" ]; then
+            echo "File $filename has read permission."
+        fi
+
+        if [ -w "$filename" ]; then
+            echo "File $filename has write permission."
+        fi
+
+        if [ -x "$filename" ]; then
+            echo "File $filename has execute permission."
+        fi
+
+    else
+        echo "File $filename does not exist."
+    fi
+}
+    Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+        File file.txt exists.
+        File file.txt has read permission.
+        File file.txt has write permission.
+
+9. Գրել սկրիպտ, որը կորոշի տրված 2 թվերից մեծագույնը և կարտածի։
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ find_max() {
+> if [ $1 -gt $2 ]; then
+> echo "The largest number is: $1"
+> else
+> echo "The largest number is: $2"
+> fi
+> }
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ find_max 10 43
+The largest number is: 43
+//-gt-ն կիրառվում է երկու թվերը համեմատելու և որոշելու համար, թե որն է ավելի մեծ:
+
+//-gt-ն վերադարձնում է true, եթե -gt-ի ձախ արժեքն ավելի մեծ է,
+// քան -gt-ի աջ կողմում գտնվող արժեքը:
+
+//սկրիպտը կստուգի ՝ if [ 10 -gt 43 ], որը կվերադարձնի false, քանի որ 10-ը 43-ից մեծ չէ:
+// Այնուհետև կկատարվի else ճյուղը, և սկրիպտը կտպի 19:
+
+10. Գրել սկրիպտ, որը կորոշի տրված թիվը զույգ է, թե կենտ։ Արտածել համապատասխան
+հաղորդագրություն։
+
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ check_evenness() {
+> if [ $(($num % 2)) -eq 0 ]; then
+> echo "$num is an even number."
+> else
+> echo "$num is an odd number."
+> fi
+> }
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ check_evenness 17
+17 is an odd number.
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ check_evenness 20
+20 is an even number.
+
+//-eq - (=)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

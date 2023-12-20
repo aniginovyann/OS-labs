@@ -1,0 +1,187 @@
+//1. Կատարել հետևյալ հրամանները, բացատրել տարբերությունը․
+cat>file1
+cat file1
+cat<file1
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ cat>file1
+Hi
+I'm file1
+
+//Ստեղծում է ֆայլ file1, տվյալները կարդում է STDIN հոսքից՝ մինչև End of File սիմվոլի հանդիպելը (Ctrl + D)։
+//Մուտքագրված տեքստը կգրվի file1-ում:
+//Եթե ֆայլն արդեն գոյություն ունի, այն կվերագրվի:
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ cat file1
+Hi
+I'm file1
+
+//Կարդում է մեկ կամ մի քանի ֆայլեր և արտածում է դրանց պարունակությունը։
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ cat<file1
+Hi
+I'm file1
+
+//Այս հրամանը կատարում է նույն գործառույթը ինչ "cat file1"-ը։
+// Այս հրամանների տարբերությունն այն է, որ այս դեպքում cat հրամանին հայտնի չէ
+// ֆայլի անունը, այն տվյալները կարդում է STDIN հոսքից, որը վերահասցեավորված է դեպի ֆայլը։ 
+// Նախորդ դեպքում հրամանը տվյալները կարդում է անմիջապես ֆայլից:
+
+//2. Ստեղծել որոշակի պարունակությամբ 3 տեքստային ֆայլ՝ file1.txt, file2.txt, file3.txt։ Այս
+ֆայլերի պարունակությունը կցել միմյանց և գրել նոր ֆայլում՝ final.txt
+
+
+C:\Users\Hayko>cat>file1.txt
+I'm file1
+
+C:\Users\Hayko>cat>file2.txt
+I'm file2
+
+C:\Users\Hayko>cat>file3.txt
+I'm file3
+
+C:\Users\Hayko>cat file1.txt file2.txt file3.txt > final.txt
+
+3. Ցուցադրել /home/student դիրեկտորիայում տեքստային ֆայլերի քանակը
+
+C:\Users\Hayko>ls *.txt | wc -l
+4
+
+4. Սորտավորել file1.txt, file2.txt, file3.txt ֆայլերի պարունակությունը և գրել նոր ֆայլում
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ cat file1.txt file2.txt file3.txt | sort > sorted.txt
+
+//5. Արտածել /home/student դիրեկտորիայի առաջին 15 ֆայլերը՝ դասավորված նվազման
+կարգով ըստ ֆայլի ծավալի։
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ ls -l /c/Users/Hayko/ | sort -r -k 5 | head -15
+-rw-r--r-- 1 Hayko 197121 18350080 Dec 17 01:47 NTUSER.DAT
+-rw-r--r-- 1 Hayko 197121  4845568 Feb 25  2021 ntuser.dat.LOG2
+-rw-r--r-- 1 Hayko 197121  4623360 Feb 25  2021 ntuser.dat.LOG1
+-rw-r--r-- 1 Hayko 197121  1048576 Dec 18 23:28 NTUSER.DAT{53b39e87-18c4-11ea-a811-000d3aa4692b}.TxR.0.regtrans-ms
+-rw-r--r-- 1 Hayko 197121  1048576 Dec 18 23:27 NTUSER.DAT{53b39e87-18c4-11ea-a811-000d3aa4692b}.TxR.2.regtrans-ms
+-rw-r--r-- 1 Hayko 197121  1048576 Dec 18 23:27 NTUSER.DAT{53b39e87-18c4-11ea-a811-000d3aa4692b}.TxR.1.regtrans-ms
+-rw-r--r-- 1 Hayko 197121   524288 Feb 25  2021 NTUSER.DAT{53b39e88-18c4-11ea-a811-000d3aa4692b}.TMContainer00000000000000000002.regtrans-ms
+-rw-r--r-- 1 Hayko 197121   524288 Feb 25  2021 NTUSER.DAT{53b39e88-18c4-11ea-a811-000d3aa4692b}.TMContainer00000000000000000001.regtrans-ms
+-rw-r--r-- 1 Hayko 197121    65536 Feb 25  2021 NTUSER.DAT{53b39e88-18c4-11ea-a811-000d3aa4692b}.TM.blf
+-rw-r--r-- 1 Hayko 197121    65536 Dec 18 23:28 NTUSER.DAT{53b39e87-18c4-11ea-a811-000d3aa4692b}.TxR.blf
+-rwxr-xr-x 1 Hayko 197121      761 Aug  5  2018 3D Objects - Shortcut.lnk*
+lrwxrwxrwx 1 Hayko 197121       66 Feb 25  2021 PrintHood -> /c/Users/Hayko/AppData/Roaming/Microsoft/Windows/Printer Shortcuts/
+lrwxrwxrwx 1 Hayko 197121       66 Feb 25  2021 NetHood -> /c/Users/Hayko/AppData/Roaming/Microsoft/Windows/Network Shortcuts/
+lrwxrwxrwx 1 Hayko 197121       59 Feb 25  2021 главное меню -> /c/Users/Hayko/AppData/Roaming/Microsoft/Windows/Start Menu/
+lrwxrwxrwx 1 Hayko 197121       58 Feb 25  2021 Шаблоны -> /c/Users/Hayko/AppData/Roaming/Microsoft/Windows/Templates/
+
+//sort -r -k 5. Այս հրամանը սորտավորում է նախորդ հրամանի ելքը հակառակ հերթականությամբ (-r)՝ հիմնվելով 
+//հինգերորդ սյունի վրա (-k 5), որը սովորաբար ներկայացնում է ֆայլի չափը: 
+//Ամենամեծ չափս ունեցող ֆայլերը կլինեն ցուցակի վերևում:
+
+//head -15 հրամանն օգտագործվում է առաջին 15 տողերը տպելու համար: 
+//Այն սահմանափակում է արտածումը առաջին 15 տողերով, 
+//ինչը այս դեպքում նշանակում է տվյալ կատալոգի առաջին 15 ամենամեծ ֆայլերը՝ դասավորված հակառակ հերթականությամբ՝ ըստ չափի:
+
+6. Արտածել /home/student դիրեկտորիայի ֆայլերի ցուցակը, միաժամանակ այն
+տեղադրելով ls.txt ֆայլում։
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ ls /c/ > ls.txt | ls -l /c/
+total 4845279
+drwxr-xr-x 1 Hayko 197121          0 Oct 24  2017 '$AV_ASW'/
+drwxr-xr-x 1 Hayko 197121          0 Feb 17  2018 '$AV_AVG'/
+drwxr-xr-x 1 Hayko 197121          0 Oct 22  2017 '$GetCurrent'/
+drwxr-xr-x 1 Hayko 197121          0 Oct 22  2017 '$Recycle.Bin'/
+drwxr-xr-x 1 Hayko 197121          0 Nov 23  2017 '$SysReset'/
+-rw-r--r-- 1 Hayko 197121          0 Nov 26  2017 '$WINRE_BACKUP_PARTITION.MARKER'
+drwxr-xr-x 1 Hayko 197121          0 Nov 20  2020 '$WinREAgent'/
+drwxr-xr-x 1 Hayko 197121          0 Nov 13  2017  Autodesk/
+-rw-r--r-- 1 Hayko 197121          1 Jul 16  2016  BOOTNXT
+drwxr-xr-x 1 Hayko 197121          0 Dec  4 23:10  Config.Msi/
+lrwxrwxrwx 1 Hayko 197121          8 Oct 22  2017 'Documents and Settings' -> /c/Users/
+-rw-r--r-- 1 Hayko 197121       8192 Dec 18 23:26  DumpStack.log.tmp
+-rw-r--r-- 1 Hayko 197121        112 Feb 14  2018  F3AB77019441
+-rw-r--r-- 1 Hayko 197121        112 Dec 26  2017  FDB56D17DB96
+drwxr-xr-x 1 Hayko 197121          0 Dec 18 23:26  Intel/
+drwxr-xr-x 1 Hayko 197121          0 May 22  2022  MATS/
+drwxr-xr-x 1 Hayko 197121          0 Feb 24  2018  MSOCache/
+drwxr-xr-x 1 Hayko 197121          0 Nov 15  2017  NVIDIA/
+drwxr-xr-x 1 Hayko 197121          0 Dec  7  2019  PerfLogs/
+drwxr-xr-x 1 Hayko 197121          0 Dec  4 21:55 'Program Files'/
+drwxr-xr-x 1 Hayko 197121          0 Nov 17 22:44 'Program Files (x86)'/
+drwxr-xr-x 1 Hayko 197121          0 Aug  9 00:26  ProgramData/
+drwxr-xr-x 1 Hayko 197121          0 Jul 13  2021  Recovery/
+drwxr-xr-x 1 Hayko 197121          0 Dec 16 20:50 'System Volume Information'/
+drwxr-xr-x 1 Hayko 197121          0 Feb 25  2021  Users/
+drwxr-xr-x 1 Hayko 197121          0 Nov 27 18:37  Windows/
+drwxr-xr-x 1 Hayko 197121          0 Jul 13  2021  Windows10Upgrade/
+drwxr-xr-x 1 Hayko 197121          0 Mar 23  2018  adobeTemp/
+-rwxr-xr-x 1 Hayko 197121     112080 May 12  2023  appverifUI.dll*
+-r--r--r-- 1 Hayko 197121     384322 Jul 16  2016  bootmgr
+drwxr-xr-x 1 Hayko 197121          0 Apr  6  2021  found.000/
+-rw-r--r-- 1 Hayko 197121 3350286336 Dec 18 23:26  hiberfil.sys
+-rw-r--r-- 1 Hayko 197121 1342177280 Dec 18 23:26  pagefile.sys
+-rw-r--r-- 1 Hayko 197121  268435456 Dec 18 23:26  swapfile.sys
+-rwxr-xr-x 1 Hayko 197121      66160 May 12  2023  vfcompat.dll*
+
+
+7. Օգտագործելով tr հրամանը՝ գաղտնագրել "secret text" տողը ROT13 ալգորիթմով։
+Վերծանել գաղտնագրված հաղորդագրությունը։
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ echo "secret text" | tr a-m,n-z n-z,a-m
+frperg grkg
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ echo "frperg grkg" | tr n-z,a-m a-m,n-z
+secret text
+
+8. Ստեղծել նոր ֆայլ՝ home.txt, հետևյալ պարունակությամբ․
+Student’s home directory is {home_dir}.
+sed հրամանի միջոցով փոխարինել {home_dir} հատվածը /home/student-ով։
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ cat>home.txt
+Student's home directory is {home-dir}.
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ sed -i 's/{home_dir}/\home\/student/' home.txt
+
+ //-i պարամետրը օգտագործվում է է արդյունքները ֆայլում գրանցելու համար։
+
+9. Ստեղծել ֆայլ, որն ունի առնվազն 5 տող պարունակություն՝ file4.txt։ Արտածել 2-4-րդ
+տողերը։
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ cat>newfile.txt
+line1
+line2
+line3
+line4
+line5
+line6
+line7
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ cat newfile.txt | sed -n '2,4p'
+line2
+line3
+line4
+
+//-n -ը կանխում է տողերի ավտոմատ տպումը:
+//Առանց -n -ի, sed-ը կտպեր բոլոր տողերը,
+// բայց -n -ով այն տպում է միայն հստակորեն նշված տողերը:
+// p հրամանը արտածում է նշված տողերը(2-4):
+
+
+10. Ջնջել file4.txt ֆայլի 2-4-րդ տողերը։
+
+Hayko@DESKTOP-FRVPQ6D MINGW64 ~ (master)
+$ sed -i '2,4d' newfile.txt
+
+//-i պարամետրը օգտագործվում է է արդյունքները ֆայլում գրանցելու համար։
+//d  հրամանը ջնջել շված տողերը(2-4):
+
+
+
